@@ -145,9 +145,9 @@ for _, row in merged_df.iterrows():
     for cost, share in zip(cost_details, share_details):
         # cost_node = str(cost)
         share_node = f"{share:.5f}"
-        # G.add_node(cost_node, node_label=share_node)  # Подписывание вершин закупок долей
+        # G.add_node(cost_node, node_label=share_node)
         G.add_node(share_node, node_color='blue', label=share_node)
-        G.add_edge(org_node, share_node, weight=cost)  # Ребро только между организацией и закупкой
+        G.add_edge(org_node, share_node, weight=cost)
 
 # Graph visualization
 pos = nx.kamada_kawai_layout(G)
@@ -187,7 +187,7 @@ reduced_df = statistic_df.drop(["name","inn"],axis=1)
 reduced_df.fillna(0, inplace=True)
 
 # Perform K-Means clustering
-# n_clusters - определели заранее, после чего указали 3 центра
+# n_clusters - were determined in advance, after which 3 centers were specified
 kmeans = KMeans(n_clusters=3, random_state=42)
 reduced_df['Cluster'] = kmeans.fit_predict(reduced_df)
 pca = PCA(n_components=2)
