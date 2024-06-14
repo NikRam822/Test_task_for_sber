@@ -23,6 +23,29 @@ python main.py
 
 This will start data collection, graph building and clustering of companies. Upon completion of the script, the results will be displayed in the console, and a graphical window with visualization of the graph and clusters will be opened.
 
+## Startup with Docker
+
+1. Build the Docker image by running the following command in the root directory of the project:
+```
+docker build -t sber-procurement-analysis .
+```
+2. Start the Docker container with the built image:
+
+ - For Linux:
+```
+docker run --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" sber-procurement-analysis
+```
+ - For Windows (using VcXsrv or Xming):
+```
+docker run --env="DISPLAY=host.docker.internal:0.0" sber-procurement-analysis
+
+```
+
+If you want to run the application without visualizing the graphics, use:
+```
+docker run sber-procurement-analysis
+```
+
 ## Documents
 
 A detailed description of the solution in Russian can be found at: https://nikram822.github.io/Test_task_for_sber/#overview
