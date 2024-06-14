@@ -23,3 +23,6 @@ python main.py
 
 This will start data collection, graph building and clustering of companies. Upon completion of the script, the results will be displayed in the console, and a graphical window with visualization of the graph and clusters will be opened.
 
+## Documents
+
+A detailed description of the solution in Russian can be found at: https://nikram822.github.io/Test_task_for_sber/#overview
