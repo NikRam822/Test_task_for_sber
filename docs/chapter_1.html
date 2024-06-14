@@ -1,0 +1,621 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Описание решения - Test task for SBER</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapter_1.html" class="active"><strong aria-hidden="true">1.</strong> Описание решения</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Test task for SBER</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Описание-решения"><a class="header" href="#Описание-решения">Описание решения</a></h1>
+<p>Этот документ предаствляет собой описание решения тестового задания</p>
+<ol>
+<li><a href="#introduction">Введение</a>
+<ul>
+<li><a href="#project-description">Описание проекта</a></li>
+<li><a href="#links">Постановка задачи</a></li>
+</ul>
+</li>
+<li><a href="#description">Обзор Решения</a>
+<ul>
+<li><a href="#overview">Общаяя концепция</a></li>
+<li><a href="#inn">1. Поиск ИНН</a></li>
+<li><a href="#procurement-search">2. Поиск закупок</a></li>
+<li><a href="#graph-construction">3. Построение графа</a></li>
+<li><a href="#clustering">4. Кластеризация </a></li>
+</ul>
+</li>
+</ol>
+<h2 id="Введение"><a class="header" href="#Введение">Введение <a name="introduction"></a></a></h2>
+<h3 id="Описание-проекта"><a class="header" href="#Описание-проекта">Описание проекта <a name="project-description"></a></a></h3>
+<p>Проект выполняет сбор, анализ и визуализацию данных о закупках организаций с долей участия Сбербанка. Он включает веб-скрапинг, обработку данных и создание графиков для отображения взаимосвязей между организациями и их закупками.</p>
+<h3 id="Постановка-задачи"><a class="header" href="#Постановка-задачи">Постановка задачи <a name="links"></a></a></h3>
+<p>Задание должно быть выполнено только средствами Python (pandas, numpy, sklearn, matplotlib, networkx)</p>
+<p><strong>Часть 1 (обязательная)</strong></p>
+<p><em>1.1.</em> Собрать из открытых источников ИНН организаций, доля владения Сбера в которых больше 0% с информацией об уставном капитале</p>
+<p><em>1.2</em> С сайта zakupki.gov.ru собрать описание закупок (планы) услуг за январь 2021 и провести анализ:</p>
+<p><em>1.2.1</em> Рассчитать долю закупок для ИНН из п. 1.1</p>
+<p><em>1.2.2</em> Построить граф по всем ИНН (Атрибут ребра - сумма закупок. При построении графа сделать зависимость толщины ребра от значения суммы. Допустимо добавление своих атрибутов ребра)</p>
+<p><strong>Часть 2 (желательная - для раскрытия навыков)</strong></p>
+<p><em>2.1</em> Для графа из п. 1.4 построить автокластеризацию по атрибутам ребер (можно использовать свои). Визуализировать кластеры</p>
+<p><strong>Часть 3 (дополнительная, если останется время)</strong>
+<em>3.1</em> разработать алгоритм поиска аномалий в признаках графа</p>
+<h2 id="Обзор-Решения"><a class="header" href="#Обзор-Решения">Обзор Решения <a name="description"></a></a></h2>
+<h3 id="Общая-концепция"><a class="header" href="#Общая-концепция">Общая концепция <a name="overview"></a></a></h3>
+<p>Общая идея решения включает в себя несколько частей:</p>
+<ol>
+<li>Поиск информации</li>
+<li>Построение модели</li>
+<li>Кластеризация данных</li>
+</ol>
+<p><strong>1. Поиск информации</strong></p>
+<p>Для поиска компаний использовались открытые источники данных. Помимо поиска информации на веб-ресурсах, я сделал обращение в СБЕР для получения данных о компаниях в котроых доля владений СБЕРА более 0% но на момент написания этого документа (14.06.24) обращение не было рассмотренно.</p>
+<p>В итоге для упращения поиска информации о компаниях которыми владеет СБЕР я использовал страницу: https://ru.wikipedia.org/wiki/Категория:Дочерние_компании_Сбербанка</p>
+<p>Таким образом я получил названия компаний, далее необходимо было найти ИНН этих компаний. Для этого я использовал сервис: https://www.prima-inform.ru/search/</p>
+<p>Затем я проверил эти ИНН на наличие закупок в январе 2021 и собрал информацию о закупках на сервисе: https://zakupki.gov.ru/epz/order/extendedsearch/results.html</p>
+<p><strong>2. Построение модели</strong></p>
+<p>Модель представляет собой двудольный остовный граф:</p>
+<ul>
+<li>Красная вершина - ИНН организации</li>
+<li>Синяя вершина - Доля конкретной закупки от всех закупок всех компаний за январь 2021-го в процентах</li>
+<li>Ребро - Стоимость закупки в рублях</li>
+</ul>
+<p>Таким образом для каждой организации граф будет выглядеть так:
+<img src="media/graph.jfif" alt="graph" /></p>
+<p>В итоге для всех найденных компаний будет построен аналогичный граф.</p>
+<p><strong>3. Кластеризация</strong></p>
+<p>В этом проекте используется кластеризация методом K-Means для группировки организаций на основе статистики их долей закупок. Идея заключается в том, чтобы найти естественные кластеры организаций, которые имеют схожие характеристики по доле закупок.</p>
+<p>Вот основные шаги кластеризации в этом проекте:
+Создается data frame, содержащий статистические данные о долях закупок (min, max, std, median) для каждой организации.</p>
+<p>Применяется метод главных компонент (PCA) для уменьшения размерности данных с 4 до 2 компонент. Это делается для возможности визуализации результатов на двумерном графике.</p>
+<p>Выполняется кластеризация методом K-Means на основе 4 признаков: min, max, std, median долей закупок.</p>
+<p>Сначала был произведен визульный анализ для первичного определния кол-ва кластеров. К сожалению, мне не удалось найти большую выборку данных, поэтому дать репрезентативное представление кластеров не представлилось возможным, но тем не менее этот метод работает на любой выборке. И представленный метод я бы также использовал и для больших выборок. Так, при визуальном анализе я определил 3 кластера, после чего и указал это количство для использования метода K-Means для группировки организаций на основе статистики их долей закупок</p>
+<h3 id="Поиск-ИНН"><a class="header" href="#Поиск-ИНН">Поиск ИНН <a name="inn"></a></a></h3>
+<p>Для посика ИНН я сделал следующее:</p>
+<ol>
+<li>
+<p>Спарсил (с помощью BeautifulSoup) названия компаний со страницы: https://ru.wikipedia.org/wiki/Категория:Дочерние_компании_Сбербанка</p>
+</li>
+<li>
+<p>Затем с помощью сервиса: https://www.prima-inform.ru/search нашел ИНН найденных ранее компаний. К сожалению, не у всех компаний удалось найти ИНН.</p>
+</li>
+</ol>
+<p>В итоге получил такой data frame:</p>
+<pre><code>                          name         inn
+0                          2ГИС  5405276278
+1                       Домклик  7736249247
+2               Драйв Клик Банк  6452010742
+3                       Еаптека  7704865540
+4                   Звук Бизнес  7801445445
+5                 НПФ Сбербанка  7725352740
+6   Объединённое кредитное бюро  7710561081
+7               Сбербанк России  7702770003
+8    Сбербанк страхование жизни  7744002123
+9                  Сбербанк-АСТ  7707308480
+10               Союзмультфильм  7731393568
+11                       Эвотор  9715260691
+12                   Rambler&amp;Co  7714247574
+</code></pre>
+<p>Код описанной выше логики:</p>
+<pre><code>def get_sber_companies():
+    url = "https://ru.wikipedia.org/wiki/Категория:Дочерние_компании_Сбербанка"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    category_groups = soup.find_all("div", class_="mw-category-group")
+    companies = []
+
+    for category_group in category_groups:
+        category_companies = category_group.find("ul")
+        companies_from_group = category_companies.find_all("li")
+        for company in companies_from_group:
+            company_link = company.find("a")
+            if company_link:
+                company_name = company_link.text
+                # INN search
+                search_inn = f"https://www.prima-inform.ru/search/?query={company_name}"
+
+                headers = {
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+                }
+
+                search_inn_response = requests.get(search_inn, headers=headers)
+                search_inn_soup = BeautifulSoup(search_inn_response.content, "html.parser")
+                inn = None
+                try:
+                    inn = search_inn_soup.find("span", class_="result_list_table__req").text.split("\n")[0].split(": ")[1]
+                except:
+                    continue
+
+                companies.append({"name": company_name, "inn": inn})
+
+    return companies
+
+
+# Obtaining data and creating a DataFrame
+companies = get_sber_companies()
+df = pd.DataFrame(companies)
+print (df)
+</code></pre>
+<h3 id="Поиск-закупок"><a class="header" href="#Поиск-закупок">Поиск закупок <a name="procurement-search"></a></a></h3>
+<p>Далее необходимо было по найденным ИНН найти закупки за январь 2021-го года.</p>
+<p>Для этого я сделал следующее:</p>
+<ol>
+<li>Нашел общую сумму всех закупок в рублях (тут речь идет о всех закупках. В том числе и тех, которые не относятся к СБЕРу и не относятся к компаниям связанным со СБЕРом)</li>
+</ol>
+<p>Общая сумма всех закупок представленна ниже:</p>
+<pre><code>Все закупки: 56769073602
+</code></pre>
+<ol start="2">
+<li>
+<p>Используя ИНН найденные на этапе Поиск ИНН, я нашел закупки компаний (которыми владеет СБЕР) за январь 2021-го года.</p>
+</li>
+<li>
+<p>Таким образом для каждой компании я получил следующий data frame:</p>
+</li>
+</ol>
+<p>inn - ИНН компании, которой владеет СБЕР.</p>
+<p>cost - Сумма всех закупок конкретной компании за январь 2021-го.</p>
+<p>share - Доля закупок компании от вех закупок всех компаний в процентах. (сумма закопуок компании/сумма всех закупок * 100).</p>
+<p>cost_details - массив закупок (в рублях) конкретной компании</p>
+<p>share_details - массив долей каждой закупки от всех закупок. (i-ый элемент из массива share_details соотсветсвует i-му элементу из cost_details)</p>
+<pre><code>          inn     cost     share              cost_details                                      share_details
+0   5405276278        0  0.000000                        []                                                 []
+1   7736249247  2357191  0.004152  [1922400, 339561, 95230]  [0.0033863508386232904, 0.0005981443389064519,...
+2   6452010742  1873200  0.003300          [980000, 893200]      [0.0017262920421612694, 0.001573391889855557]
+3   7704865540        0  0.000000                        []                                                 []
+4   7801445445        0  0.000000                        []                                                 []
+5   7725352740   302400  0.000533                  [302400]                            [0.0005326844015811918]
+6   7710561081        0  0.000000                        []                                                 []
+7   7702770003  2126019  0.003745         [811200, 1314819]      [0.001428947045511451, 0.0023160832414106515]
+8   7744002123        0  0.000000                        []                                                 []
+9   7707308480        0  0.000000                        []                                                 []
+10  7731393568        0  0.000000                        []                                                 []
+11  9715260691        0  0.000000                        []                                                 []
+12  7714247574        0  0.000000                        []                                                 []
+</code></pre>
+<p>Код описанной выше логики:</p>
+<pre><code>## 1.2 Collection of procurement data from zakupki.gov.ru website and analysis
+
+# Function for obtaining procurement data from the website zakupki.gov.ru
+def get_procurements_data():
+    currency_rates = {
+        "$": 89,
+        "€": 95,
+        "₽": 1
+    }
+
+    url = "https://zakupki.gov.ru/epz/order/extendedsearch/results.html?searchString=&amp;morphology=on&amp;search-filter=%D0%94%D0%B0%D1%82%D0%B5+%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&amp;pageNumber=1&amp;sortDirection=false&amp;recordsPerPage=_100&amp;showLotsInfoHidden=false&amp;savedSearchSettingsIdHidden=&amp;sortBy=UPDATE_DATE&amp;fz44=on&amp;fz223=on&amp;af=on&amp;ca=on&amp;pc=on&amp;placingWayList=&amp;selectedLaws=&amp;priceFromGeneral=&amp;priceFromGWS=&amp;priceFromUnitGWS=&amp;priceToGeneral=&amp;priceToGWS=&amp;priceToUnitGWS=&amp;currencyIdGeneral=-1&amp;publishDateFrom=01.01.2021&amp;publishDateTo=31.01.2021&amp;applSubmissionCloseDateFrom=&amp;applSubmissionCloseDateTo=&amp;customerIdOrg=&amp;customerFz94id=&amp;customerTitle=&amp;okpd2Ids=&amp;okpd2IdsCodes="
+
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, "html.parser")
+    pages=soup.find_all("li",class_="page")[-1].text.replace("\n","")
+    result=0
+    for i in range(int(pages)):
+        url = f"https://zakupki.gov.ru/epz/order/extendedsearch/results.html?searchString=&amp;morphology=on&amp;search-filter=%D0%94%D0%B0%D1%82%D0%B5+%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&amp;pageNumber={i + 1}&amp;sortDirection=false&amp;recordsPerPage=_100&amp;showLotsInfoHidden=false&amp;savedSearchSettingsIdHidden=&amp;sortBy=UPDATE_DATE&amp;fz44=on&amp;fz223=on&amp;af=on&amp;ca=on&amp;pc=on&amp;placingWayList=&amp;selectedLaws=&amp;priceFromGeneral=&amp;priceFromGWS=&amp;priceFromUnitGWS=&amp;priceToGeneral=&amp;priceToGWS=&amp;priceToUnitGWS=&amp;currencyIdGeneral=-1&amp;publishDateFrom=01.01.2021&amp;publishDateTo=31.01.2021&amp;applSubmissionCloseDateFrom=&amp;applSubmissionCloseDateTo=&amp;customerIdOrg=&amp;customerFz94id=&amp;customerTitle=&amp;okpd2Ids=&amp;okpd2IdsCodes="
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.content, "html.parser")
+        costs=soup.find_all("div",class_="price-block__value")
+        for cost in costs:
+            cost_text = cost.text.strip()
+            cost_value = int(re.sub(r'[^\d]+', '', re.sub(r'[, ]', '', cost_text)))//100
+            currency = re.search(r'[^0-9\s,]$', cost_text).group()
+            if currency in currency_rates:
+                cost_value = cost_value * currency_rates[currency]
+                result += cost_value
+            else:
+                print(f"Неизвестная валюта: {currency}")
+    print("Все закупки:" + str(result))
+    procurements = []
+    for inn in df['inn']:
+        result_for_one_company=0
+        url = f"https://zakupki.gov.ru/epz/order/extendedsearch/results.html?searchString={inn}&amp;morphology=on&amp;search-filter=%D0%94%D0%B0%D1%82%D0%B5+%D0%BE%D0%B1%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F&amp;pageNumber=1&amp;sortDirection=false&amp;recordsPerPage=_100&amp;showLotsInfoHidden=false&amp;savedSearchSettingsIdHidden=&amp;sortBy=UPDATE_DATE&amp;fz44=on&amp;fz223=on&amp;af=on&amp;ca=on&amp;pc=on&amp;placingWayList=&amp;selectedLaws=&amp;priceFromGeneral=&amp;priceFromGWS=&amp;priceFromUnitGWS=&amp;priceToGeneral=&amp;priceToGWS=&amp;priceToUnitGWS=&amp;currencyIdGeneral=-1&amp;publishDateFrom=01.01.2021&amp;publishDateTo=31.01.2021&amp;applSubmissionCloseDateFrom=&amp;applSubmissionCloseDateTo=&amp;customerIdOrg=&amp;customerFz94id=&amp;customerTitle=&amp;okpd2Ids=&amp;okpd2IdsCodes="
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.content, "html.parser")
+        costs = soup.find_all("div", class_="price-block__value")
+        cost_details=[]
+        share_details=[]
+        for cost in costs:
+            cost_text = cost.text.strip()
+            cost_value = int(re.sub(r'[^\d]+', '', re.sub(r'[, ]', '', cost_text))) // 100
+            currency = re.search(r'[^0-9\s,]$', cost_text).group()
+            if currency in currency_rates:
+                cost_value = cost_value * currency_rates[currency]
+                result_for_one_company += cost_value
+                cost_details.append(cost_value)
+                share_details.append(cost_value/result*100)
+        share=result_for_one_company/result*100
+        procurements.append({"inn": inn, "cost": result_for_one_company, "share":share,"cost_details":cost_details, "share_details":share_details})
+
+    return procurements
+
+# Obtaining procurement data for January 2021
+procurements_data = get_procurements_data()
+procurements_df = pd.DataFrame(procurements_data)
+print(procurements_df)
+</code></pre>
+<h3 id="Построение-графа"><a class="header" href="#Построение-графа">Построение графа <a name="graph-construction"></a></a></h3>
+<p>Для построения графа я обьеденил data frame из Поиск закупок и data frame из Поиск ИНН.</p>
+<p>Таким образом data frame для построения графа выглядел так:</p>
+<pre><code>                           name         inn     cost     share              cost_details                                      share_details
+0                          2ГИС  5405276278        0  0.000000                        []                                                 []
+1                       Домклик  7736249247  2357191  0.004152  [1922400, 339561, 95230]  [0.0033863508386232904, 0.0005981443389064519,...
+2               Драйв Клик Банк  6452010742  1873200  0.003300          [980000, 893200]      [0.0017262920421612694, 0.001573391889855557]
+3                       Еаптека  7704865540        0  0.000000                        []                                                 []
+4                   Звук Бизнес  7801445445        0  0.000000                        []                                                 []
+5                 НПФ Сбербанка  7725352740   302400  0.000533                  [302400]                            [0.0005326844015811918]
+6   Объединённое кредитное бюро  7710561081        0  0.000000                        []                                                 []
+7               Сбербанк России  7702770003  2126019  0.003745         [811200, 1314819]      [0.001428947045511451, 0.0023160832414106515]
+8    Сбербанк страхование жизни  7744002123        0  0.000000                        []                                                 []
+9                  Сбербанк-АСТ  7707308480        0  0.000000                        []                                                 []
+10               Союзмультфильм  7731393568        0  0.000000                        []                                                 []
+11                       Эвотор  9715260691        0  0.000000                        []                                                 []
+12                   Rambler&amp;Co  7714247574        0  0.000000                        []                                                 []
+</code></pre>
+<p>Затем, я построил следующий граф:
+<img src="media/graph-result.png" alt="graph-result" /></p>
+<p>Это двудольный остовный граф, где:</p>
+<ul>
+<li>Красная вершина - Название организации</li>
+<li>Синяя вершина - Доля конкретной закупки от всех закупок всех компаний за январь 2021-го года в процентах</li>
+<li>Ребро - Стоимость закупки в рублях</li>
+</ul>
+<p>Толщина ребра прямо пропорциональна сумме закупки компании.</p>
+<p>На графе видно, что 4 компании из 13-ти имеют закупки в январе 2021-го года. Также видно суммы и доли закупок.</p>
+<p>Код описанной выше логики:</p>
+<pre><code>### 1.2.1 Calculation of the share of purchases for TINs from 1.1.1
+
+# Consolidation of company and procurement data
+merged_df = pd.merge(df, procurements_df, on='inn', how='left')
+print(merged_df[['name', 'inn', 'cost', 'share', 'cost_details','share_details']])
+
+### 1.2.2 Construction of the graph by all TINs
+
+# Graph creation
+G = nx.Graph()
+
+# Adding vertices and edges
+for _, row in merged_df.iterrows():
+    inn = row['inn']
+    cost_details = row['cost_details']
+    share_details = row['share_details']
+
+    # Adding a vertex for an organization
+    org_node = f"{row['name']} ({inn})"
+    G.add_node(org_node, node_color='red', label=row['name'])
+
+
+
+    # Adding vertices and edges for purchases
+    for cost, share in zip(cost_details, share_details):
+        # cost_node = str(cost)
+        share_node = f"{share:.5f}"
+        # G.add_node(cost_node, node_label=share_node)
+        G.add_node(share_node, node_color='blue', label=share_node)
+        G.add_edge(org_node, share_node, weight=cost)
+
+# Graph visualization
+pos = nx.kamada_kawai_layout(G)
+edge_weights = nx.get_edge_attributes(G, 'weight')
+max_weight = max(edge_weights.values())
+normalized_weights = {edge: weight / max_weight for edge, weight in edge_weights.items()}
+
+node_colors = nx.get_node_attributes(G, 'node_color')
+node_labels = nx.get_node_attributes(G, 'label')
+default_node_color = 'lightblue'
+
+fig, ax = plt.subplots(figsize=(12, 8))
+nx.draw(G, pos, with_labels=True, labels=node_labels, node_color=[node_colors.get(node, default_node_color) for node in G.nodes()], edge_color="gray", ax=ax)
+nx.draw_networkx_edges(G, pos, width=[normalized_weights[edge] * 5 for edge in G.edges()], ax=ax)
+nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_weights, font_size=8, bbox=dict(facecolor='white', edgecolor='none', alpha=0.7), ax=ax)
+
+plt.tight_layout()
+plt.show()
+</code></pre>
+<h3 id="Кластеризация"><a class="header" href="#Кластеризация">Кластеризация <a name="clustering"></a></a></h3>
+<p>Для кластеризации данных необходимо было:</p>
+<ol>
+<li>Решить какие данные кластризировать.</li>
+<li>Собрать и обработать данные.</li>
+<li>Визуализировать данные.</li>
+</ol>
+<p>Для кластеризации я решил создать 4-х мерный вектор с репрезентативной статистичекой информацией о долях закупок найденных компаний.</p>
+<p>Я выбрал 4 признака кластеризации:</p>
+<ul>
+<li>min - минимальная доля закупок компании</li>
+<li>max - максимальная доля закупок компании</li>
+<li>std - стандартное оклонение закупок компании</li>
+<li>median - медиана долей закупок компании</li>
+</ul>
+<p>Эти данные я собрал и получил следующий data frame:</p>
+<pre><code>                          name         inn       min       max       std    median
+0                          2ГИС  5405276278       NaN       NaN       NaN       NaN
+1                       Домклик  7736249247  0.000168  0.003386  0.001427  0.000598
+2               Драйв Клик Банк  6452010742  0.001573  0.001726  0.000076  0.001650
+3                       Еаптека  7704865540       NaN       NaN       NaN       NaN
+4                   Звук Бизнес  7801445445       NaN       NaN       NaN       NaN
+5                 НПФ Сбербанка  7725352740  0.000533  0.000533  0.000000  0.000533
+6   Объединённое кредитное бюро  7710561081       NaN       NaN       NaN       NaN
+7               Сбербанк России  7702770003  0.001429  0.002316  0.000444  0.001873
+8    Сбербанк страхование жизни  7744002123       NaN       NaN       NaN       NaN
+9                  Сбербанк-АСТ  7707308480       NaN       NaN       NaN       NaN
+10               Союзмультфильм  7731393568       NaN       NaN       NaN       NaN
+11                       Эвотор  9715260691       NaN       NaN       NaN       NaN
+12                   Rambler&amp;Co  7714247574       NaN       NaN       NaN       NaN
+</code></pre>
+<p>Далее, на основе представленного data frame, я использовал метод K-Means для кластеризации представленных векторов (без inn и name).</p>
+<p>Для этого я применил метод главных компонент PCA для сжатия 4-мерного вектора до 2-мерного, чтобы визуализировать его в 2-мерном пространстве. Затем я визуализировал полученные данные после сжатия:</p>
+<p><img src="media/klaster-no-color.png" alt="klaster-no-color" /></p>
+<p>Так как есть всего 4е компании с ненулевыми закупками мы получили 5 компонент (4-компании с ненулевыми закупками и 5 - компании с нулевыми закупками).</p>
+<p>Выборка маленькая, не репрезентативнаия, но достаточна для визуализации работы моего решения. Далее я выделяю клстеры для найденных компонент.</p>
+<p>Я выделил три кластера обозначенных ниже:
+<img src="media/klasters.png" alt="klasters.png" /></p>
+<p>Для большей выборки это было-бы репрезентативнее, но как есть</p>
+<p>Таким образом, я использую метод кластеризации K-Means в качестве кол-ва кластеров указываю параметр 3.</p>
+<p>Таким образом, я получаю итоговую кластеризацию, где каждый кластер выделен своим цветом:
+<img src="media/klaster-final.png" alt="klaster-final" /></p>
+<p>Мои комментарии к Решению.</p>
+<p>Я понимаю, что на практике не строят кластеры для 5-ти элементов. Понимаю, что выборка маленькая и это слабая часть моего решения. Но тем не менее, считаю, что решение демонстрирует рабочие подходы и методы.</p>
+<p>Код описанной выше логики:</p>
+<pre><code># # Part 2 (desirable - to unlock skills)
+#
+# ## 2.1 Autoclustering of graph by attributes of edges and visualization of clusters
+#
+# Creating a new DataFrame with share_details statistics
+statistic_df = merged_df[['name', 'inn']].copy()
+statistic_df['min'] = merged_df['share_details'].apply(lambda x: np.min(x) if len(x) &gt; 0 else np.nan)
+statistic_df['max'] = merged_df['share_details'].apply(lambda x: np.max(x) if len(x) &gt; 0 else np.nan)
+statistic_df['std'] = merged_df['share_details'].apply(lambda x: np.std(x) if len(x) &gt; 0 else np.nan)
+statistic_df['median'] = merged_df['share_details'].apply(lambda x: np.median(x) if len(x) &gt; 0 else np.nan)
+
+print(statistic_df)
+
+# Apply PCA to reduce dimensions to 2
+reduced_df = statistic_df.drop(["name","inn"],axis=1)
+# Encode NaN values with zeros
+reduced_df.fillna(0, inplace=True)
+
+# Perform K-Means clustering
+# n_clusters - were determined in advance, after which 3 centers were specified
+kmeans = KMeans(n_clusters=3, random_state=42)
+reduced_df['Cluster'] = kmeans.fit_predict(reduced_df)
+pca = PCA(n_components=2)
+pca_result = pca.fit_transform(reduced_df.iloc[:, :-1])
+reduced_df['PCA1'] = pca_result[:, 0]
+reduced_df['PCA2'] = pca_result[:, 1]
+
+
+# Plot the PCA result
+plt.figure(figsize=(10, 6))
+plt.scatter(reduced_df['PCA1'], reduced_df['PCA2'], c=reduced_df['Cluster'], cmap='viridis', marker='o')
+
+plt.xlabel('PCA1')
+plt.ylabel('PCA2')
+plt.title('PCA of Clusters from 4 Features')
+plt.show()
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
