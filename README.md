@@ -7,8 +7,30 @@ This project is designed to analyze the procurement of Sberbank subsidiaries. It
 ## Requirements
  - Python 3.6 or higher
  - Installed dependencies from the requirements.txt file
+ - 
+## Installation with venv (recommended)
+1. Clone this repository.
+2. Navigate to the project directory.
+3. Run the command to create a virtual environment in the project directory:
+```
+python -m venv venv
+```
+4. Activate the created virtual environment:
 
-## Installation
+- On Windows:
+```
+venv\Scripts\activate
+```
+
+- On macOS and Linux:
+```
+source venv/bin/activate
+```
+5. Install dependencies from the requirements.txt file:
+```
+pip install -r requirements.txt
+```
+## Installation without venv
 1. Clone this repository.
 2. Navigate to the project directory.
 3. Install dependencies from the requirements.txt file:
